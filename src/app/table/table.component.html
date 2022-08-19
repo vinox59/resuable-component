@@ -12,13 +12,41 @@
 </table>
 <div class="pagination-container">
   <div class="pagination">
-    <a href="#">&laquo;</a>
-    <a href="#">1</a>
-    <a href="#" class="active">2</a>
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <a href="#">5</a>
-    <a href="#">6</a>
-    <a href="#">&raquo;</a>
+    <a href="#" (click)="getCurrentPage(1, 'first')">&laquo;</a>
+    <a
+      href="#"
+      (click)="
+        getCurrentPage(currentPage - 1 == 0 ? 1 : currentPage - 1, 'stepDown')
+      "
+      >&lsaquo;</a
+    >
+    <a
+      *ngFor="
+        let pageNo of pageinationCountList
+          | slice: sliceCountStart:sliceCountEnd
+      "
+      [ngClass]="{ active: currentPage == pageNo }"
+      (click)="getCurrentPage(pageNo)"
+      >{{ pageNo }}</a
+    >
+    <a>...</a>
+    <a
+      [ngClass]="{ active: currentPage == pageinationCount }"
+      (click)="getCurrentPage(pageNo)"
+      >{{ pageinationCount }}</a
+    >
+    <a
+      href="#"
+      (click)="
+        getCurrentPage(
+          currentPage + 1 == pageinationCount
+            ? pageinationCount
+            : currentPage + 1,
+          'stepUp'
+        )
+      "
+      >&rsaquo;</a
+    >
+    <a href="#" (click)="getCurrentPage(pageinationCount, 'last')">&raquo;</a>
   </div>
 </div>

@@ -7,29 +7,63 @@ import { ITableSettings } from './table/table.interface';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [CountriesService]
+  providers: [CountriesService],
 })
 export class AppComponent {
   title = 'reusable-Compnent';
 
-  tableSetting: ITableSettings[] = [{
-    field:'name',
-    title: "Name"
-  }, {
-    field: 'age',
-    title: 'Age'
-  }]
+  tableSetting: ITableSettings[] = [
+    {
+      field: 'name',
+      title: 'Name',
+    },
+    {
+      field: 'age',
+      title: 'Age',
+    },
+    {
+      field: 'email',
+      title: 'Email',
+    },
+  ];
 
-  constructor(private toaster: ToasterService) {
-  }
+  tableData = [
+    {
+      name: 'Lisanth',
+      age: 4,
+      email: 'lisavinox@gmail.com',
+    },
+    {
+      name: 'Lisanth',
+      age: 4,
+      email: 'lisavinox@gmail.com',
+    },
+    {
+      name: 'Lisanth',
+      age: 4,
+      email: 'lisavinox@gmail.com',
+    },
+  ];
+
+  constructor(private toaster: ToasterService) {}
 
   showSuccessToaster() {
-    this.toaster.show('success', 'Well done!', 'This is a success alert', 10000);
+    this.toaster.show(
+      'success',
+      'Well done!',
+      'This is a success alert',
+      10000
+    );
   }
   showErrorToaster() {
     this.toaster.show('error', 'Sorry!', 'Please Try after sometime', 10000);
   }
   showWarningToaster() {
-    this.toaster.show('warning', 'Config!', 'Some Configuration is Missing', 10000);
+    this.toaster.show(
+      'warning',
+      'Config!',
+      'Some Configuration is Missing',
+      10000
+    );
   }
 }

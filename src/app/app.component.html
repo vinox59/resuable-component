@@ -1,19 +1,30 @@
 <div class="container-fluid">
-
   <!-- custom Dropdown with multicheck and single check option -->
-  <h3>Dropdown with single and multi check</h3>
-  <app-custom-dropdown></app-custom-dropdown>
+  <div class="block custom-dropdown">
+    <h3>Dropdown with single and multi check</h3>
+    <app-custom-dropdown></app-custom-dropdown>
+  </div>
   <!-- custom dropdown end -->
 
   <!-- Toaster Component -->
-  <h3>Toaster</h3>
-  <app-toaster-container></app-toaster-container>
-  <button (click)="showSuccessToaster()">Success</button>
-  <button (click)="showErrorToaster()">Error</button>
-  <button (click)="showWarningToaster()">Warning</button>
+  <div class="block toaster">
+    <h3>Toaster</h3>
+    <app-toaster-container></app-toaster-container>
+    <button (click)="showSuccessToaster()" class="btn btn-success btn-sm">
+      Success
+    </button>
+    <button (click)="showErrorToaster()" class="btn btn-danger btn-sm">
+      Error
+    </button>
+    <button (click)="showWarningToaster()" class="btn btn-warning btn-sm">
+      Warning
+    </button>
+  </div>
   <!-- toaster end -->
 
   <!-- Table Component -->
-  <app-table [settings]="tableSetting" [data]="tableData"></app-table>
-
+  <div class="block custom-table">
+    <h3>Custom Table</h3>
+    <app-table [settings]="tableSetting" [data]="tableData"></app-table>
+  </div>
 </div>

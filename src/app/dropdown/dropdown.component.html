@@ -1,0 +1,7 @@
+<span class="dropdown" *ngIf="select != undefined">
+    <label [for]="label">{{label}}</label>
+    <select [(ngModel)]="selectedValue" (change)="setValue($event.target.value)" class="form-control">
+        <option value=""> Select {{label}}</option>
+        <option *ngFor="let val of select.values">{{val}}</option>
+    </select>
+</span>

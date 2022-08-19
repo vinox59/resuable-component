@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <app-dropdown
+    [select]="region"
+    (ChangeEvent)="getSelectedValue($event)"
+  ></app-dropdown>
+  <app-dropdown
+    [select]="country"
+    (ChangeEvent)="getSelectedValue($event)"
+  ></app-dropdown>
+
+  <app-country-detail
+    [columns]="column"
+    [item]="countriesDetails"
+    *ngIf="showHideTable"
+  ></app-country-detail>
+  <!-- <div style="height: 900px;"></div> -->
+  <!-- custom Dropdown with multicheck and single check option -->
+  <h3>Dropdown with single and multi check</h3>
+  <app-custom-dropdown></app-custom-dropdown>
+  <!-- Toaster Component -->
+  <h3>Toaster</h3>
+  <app-toaster-container></app-toaster-container>
+  <button (click)="showSuccessToaster()">Success</button>
+  <!-- toaster end -->
+</div>

@@ -1,0 +1,15 @@
+<table class="table table-bordered" *ngIf="column?.length > 0">
+    <thead>
+        <tr>
+            <th *ngFor="let column of columns">{{column | titlecase}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of item">
+            <td *ngFor="let column of columns">
+                <span *ngIf="column != 'flag'">{{row[column]}}</span>
+                <img src="{{row[column]}}" *ngIf="column == 'flag'" width="20" height="20"/>
+            </td>
+        </tr>
+    </tbody>
+</table>

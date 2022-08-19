@@ -16,7 +16,7 @@
         <div class="dropdown-item" *ngFor="let option of config.data" (click)="selectedItem(option)">{{option[config.labelBy]}}</div>
     </ng-container>
     <ng-container *ngIf="config.isMulti">
-        <div class="dropdown-item" *ngFor="let option of config.data"><input type="checkbox" name="{{option[config.labelBy]}}" (change)="selectedCheckBox($event, option)" [checked]="option['isChecked']"/>{{option[config.labelBy]}}</div>
+        <div class="dropdown-item" *ngFor="let option of config.data" (click)="selectCheckBox(option)"><input type="checkbox" name="{{option[config.labelBy]}}" (change)="selectedCheckBox($event, option)" [checked]="option['isChecked']"/>{{option[config.labelBy]}}</div>
     </ng-container>
   </div>
 </div>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Dropdown, IcountryDetail } from '../app/dropdown';
 import { CountriesService } from '../app/countries.service';
 import { ToasterService } from '../app/toaster/toaster.service';
-
+import { ITableSettings } from './table/table.interface';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,6 +11,14 @@ import { ToasterService } from '../app/toaster/toaster.service';
 })
 export class AppComponent {
   title = 'reusable-Compnent';
+
+  tableSetting: ITableSettings[] = [{
+    field:'name',
+    title: "Name"
+  }, {
+    field: 'age',
+    title: 'Age'
+  }]
 
   constructor(private toaster: ToasterService) {
   }

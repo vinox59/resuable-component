@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { CustomDropdownComponent } from './custom-dropdown/custom-dropdown.component';
 import { ToasterComponent } from './toaster/toaster.component';
 import { ToasterContainerComponent } from './toaster/toaster-container/toaster-container.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomDropdownComponent,
     ToasterComponent,
-    ToasterContainerComponent
+    ToasterContainerComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

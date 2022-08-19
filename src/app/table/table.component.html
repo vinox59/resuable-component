@@ -1,0 +1,12 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th *ngFor="let column of settings">{{column.title}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let list of data">
+            <td *ngFor="let column of settings">{{list[column.field]}}</td>
+        </tr>
+    </tbody>
+</table>

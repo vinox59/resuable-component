@@ -43,7 +43,10 @@ export class TableComponent implements OnInit {
       this.sliceCountEnd++;
     }
 
-    if (pageNo < this.sliceCountEnd && action == 'stepDown') {
+    if (pageNo <= 4 && action == 'stepDown') {
+      this.sliceCountStart = 0;
+      this.sliceCountEnd = 4;
+    } else if (action == 'stepDown') {
       this.sliceCountStart--;
       this.sliceCountEnd--;
     }

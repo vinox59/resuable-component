@@ -28,7 +28,7 @@ export class AppComponent {
   ];
 
   tableData: ITableData = {
-    count: 1234,
+    count: 75,
     perPage: 15,
     data: [
       {

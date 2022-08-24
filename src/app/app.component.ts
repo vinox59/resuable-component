@@ -14,6 +14,7 @@ export class AppComponent {
 
   tableSetting: ITableSettings[] = [
     {
+      type: 'readonly',
       field: 'name',
       title: 'Name',
     },

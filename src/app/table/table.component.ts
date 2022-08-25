@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ITableSettings, ITableData } from './table.interface';
 
 @Component({
@@ -9,6 +9,7 @@ import { ITableSettings, ITableData } from './table.interface';
 export class TableComponent implements OnInit {
   @Input() settings: ITableSettings[];
   @Input() tableData: ITableData;
+  @Output() checkboxEvent = new EventEmitter();
   sliceCountStart: number = 0;
   sliceCountEnd: number = 4;
   pageinationCount: number;
@@ -38,17 +39,22 @@ export class TableComponent implements OnInit {
 
   getCurrentPage(pageNo, action?: string) {
     this.currentPage = pageNo;
-    if (pageNo > this.sliceCountEnd && action == 'stepUp') {
-      this.sliceCountStart++;
-      this.sliceCountEnd++;
-    }
+    // if (pageNo > this.sliceCountEnd && action == 'stepUp') {
+    //   this.sliceCountStart++;
+    //   this.sliceCountEnd++;
+    // }
 
-    if (pageNo <= 4 && action == 'stepDown') {
-      this.sliceCountStart = 0;
-      this.sliceCountEnd = 4;
-    } else if (action == 'stepDown') {
-      this.sliceCountStart--;
-      this.sliceCountEnd--;
-    }
+    // if (pageNo <= 4 && action == 'stepDown') {
+    //   this.sliceCountStart = 0;
+    //   this.sliceCountEnd = 4;
+    // } else if (action == 'stepDown') {
+    //   this.sliceCountStart--;
+    //   this.sliceCountEnd--;
+    // }
+  }
+
+  checkboxEmit(event: any, data: any, field: string) {
+    const obj = { isSelected: event.target.checked, data, field };
+    this.checkboxEvent.emit(obj);
   }
 }

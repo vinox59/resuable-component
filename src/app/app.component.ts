@@ -19,12 +19,19 @@ export class AppComponent {
       title: 'Name',
     },
     {
+      type: 'readonly',
       field: 'age',
       title: 'Age',
     },
     {
+      type: 'readonly',
       field: 'email',
       title: 'Email',
+    },
+    {
+      type: 'checkbox',
+      field: 'closed',
+      title: 'Closed',
     },
   ];
 
@@ -36,16 +43,19 @@ export class AppComponent {
         name: 'Lisanth',
         age: 4,
         email: 'lisavinox@gmail.com',
+        closed: true,
       },
       {
         name: 'Lisanth',
         age: 4,
         email: 'lisavinox@gmail.com',
+        closed: false,
       },
       {
         name: 'Lisanth',
         age: 4,
         email: 'lisavinox@gmail.com',
+        closed: true,
       },
     ],
   };
@@ -70,5 +80,9 @@ export class AppComponent {
       'Some Configuration is Missing',
       10000
     );
+  }
+
+  getCheckboxEvent(event) {
+    console.log(event);
   }
 }

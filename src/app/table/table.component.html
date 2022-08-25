@@ -5,16 +5,27 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let list of tableData.data">
-      <td *ngFor="let column of settings">{{ list[column.field] }}</td>
+    <tr *ngFor="let list of tableData.data; let i = index">
+      <td *ngFor="let column of settings">
+        <ng-container *ngIf="column.type == 'readonly'">
+          {{ list[column.field] }}
+        </ng-container>
+        <ng-container *ngIf="column.type == 'checkbox'">
+          <input
+            type="checkbox"
+            name="{{ column.field }}-{{ i }}"
+            [checked]="list[column.field]"
+            (change)="checkboxEmit($event, list, column.field)"
+          />
+        </ng-container>
+      </td>
     </tr>
   </tbody>
 </table>
 <div class="pagination-container">
   <div class="pagination">
-    <a href="#" (click)="getCurrentPage(1, 'first')">&laquo;</a>
+    <a (click)="getCurrentPage(1, 'first')">&laquo;</a>
     <a
-      href="#"
       (click)="
         getCurrentPage(currentPage - 1 == 0 ? 1 : currentPage - 1, 'stepDown')
       "
@@ -29,14 +40,13 @@
       (click)="getCurrentPage(pageNo)"
       >{{ pageNo }}</a
     >
-    <a>...</a>
+    <a *ngIf="pageinationCount > 5">...</a>
     <a
       [ngClass]="{ active: currentPage == pageinationCount }"
       (click)="getCurrentPage(pageNo)"
       >{{ pageinationCount }}</a
     >
     <a
-      href="#"
       (click)="
         getCurrentPage(
           currentPage + 1 == pageinationCount

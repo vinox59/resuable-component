@@ -1,7 +1,14 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th *ngFor="let column of settings">{{ column.title }}</th>
+      <th
+        *ngFor="let column of settings"
+        [ngStyle]="{
+          width: column?.width ? column.width : 'auto'
+        }"
+      >
+        {{ column.title }}
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -54,8 +61,15 @@
       (click)="getCurrentPage(pageNo)"
       >{{ pageNo }}</a
     >
-    <a *ngIf="pageinationCount > 5">...</a>
     <a
+      *ngIf="
+        pageinationCount > 5 &&
+        !(currentPage >= pageinationCountList.at(-1) - 1)
+      "
+      >...</a
+    >
+    <a
+      *ngIf="currentPage != pageinationCount"
       [ngClass]="{ active: currentPage == pageinationCount }"
       (click)="getCurrentPage(pageNo)"
       >{{ pageinationCount }}</a
@@ -63,7 +77,7 @@
     <a
       (click)="
         getCurrentPage(
-          currentPage + 1 == pageinationCount
+          currentPage + 1 > pageinationCount
             ? pageinationCount
             : currentPage + 1,
           'stepUp'

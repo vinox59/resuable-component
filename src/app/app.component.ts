@@ -17,7 +17,7 @@ export class AppComponent {
       type: 'readonly',
       field: 'name',
       title: 'Name',
-      width: '200px',
+      width: '500px',
     },
     {
       type: 'readonly',
@@ -44,7 +44,7 @@ export class AppComponent {
   ];
 
   tableData: ITableData = {
-    count: 75,
+    count: 95,
     perPage: 15,
     data: [
       {
@@ -95,6 +95,10 @@ export class AppComponent {
   }
 
   getActionEvent(event) {
+    console.log(event);
+  }
+
+  getpaginationDetails(event) {
     console.log(event);
   }
 }

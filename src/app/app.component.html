@@ -25,6 +25,6 @@
   <!-- Table Component -->
   <div class="block custom-table">
     <h3>Custom Table</h3>
-    <app-table [settings]="tableSetting" [tableData]="tableData" (checkboxEvent)="getCheckboxEvent($event)" (actionEvent)="getActionEvent($event)"></app-table>
+    <app-table [settings]="tableSetting" [tableData]="tableData" (checkboxEvent)="getCheckboxEvent($event)" (actionEvent)="getActionEvent($event)" (paginationDetails)="getpaginationDetails($event)"></app-table>
   </div>
 </div>

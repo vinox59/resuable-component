@@ -11,8 +11,10 @@ export class TableComponent implements OnInit {
   @Input() tableData: ITableData;
   @Output() checkboxEvent = new EventEmitter();
   @Output() actionEvent = new EventEmitter();
+  @Output() paginationDetails = new EventEmitter();
+  initalPagination: number = 4;
   sliceCountStart: number = 0;
-  sliceCountEnd: number = 4;
+  sliceCountEnd: number = this.initalPagination;
   pageinationCount: number;
   pageinationCountList: number[] = [];
   currentPage: number = 1;
@@ -40,18 +42,25 @@ export class TableComponent implements OnInit {
 
   getCurrentPage(pageNo, action?: string) {
     this.currentPage = pageNo;
-    // if (pageNo > this.sliceCountEnd && action == 'stepUp') {
-    //   this.sliceCountStart++;
-    //   this.sliceCountEnd++;
-    // }
 
-    // if (pageNo <= 4 && action == 'stepDown') {
-    //   this.sliceCountStart = 0;
-    //   this.sliceCountEnd = 4;
-    // } else if (action == 'stepDown') {
-    //   this.sliceCountStart--;
-    //   this.sliceCountEnd--;
-    // }
+    switch (action) {
+      case 'stepUp':
+        if (pageNo > this.sliceCountEnd) {
+          this.sliceCountStart++;
+          this.sliceCountEnd++;
+        }
+        break;
+      case 'stepDown':
+        if (pageNo <= this.initalPagination) {
+          this.sliceCountStart = 0;
+          this.sliceCountEnd = this.initalPagination;
+        }
+        break;
+    }
+    const obj = {
+      currentPage: pageNo,
+    };
+    this.paginationDetails.emit(obj);
   }
 
   checkboxEmit(event: any, data: any, field: string) {

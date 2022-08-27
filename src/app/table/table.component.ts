@@ -10,6 +10,7 @@ export class TableComponent implements OnInit {
   @Input() settings: ITableSettings[];
   @Input() tableData: ITableData;
   @Output() checkboxEvent = new EventEmitter();
+  @Output() actionEvent = new EventEmitter();
   sliceCountStart: number = 0;
   sliceCountEnd: number = 4;
   pageinationCount: number;
@@ -56,5 +57,10 @@ export class TableComponent implements OnInit {
   checkboxEmit(event: any, data: any, field: string) {
     const obj = { isSelected: event.target.checked, data, field };
     this.checkboxEvent.emit(obj);
+  }
+
+  clickAction(data: any, field: string) {
+    const obj = { data, field };
+    this.actionEvent.emit(obj);
   }
 }

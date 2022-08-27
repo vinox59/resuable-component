@@ -17,6 +17,7 @@ export class AppComponent {
       type: 'readonly',
       field: 'name',
       title: 'Name',
+      width: '200px',
     },
     {
       type: 'readonly',
@@ -32,6 +33,13 @@ export class AppComponent {
       type: 'checkbox',
       field: 'closed',
       title: 'Closed',
+    },
+    {
+      type: 'button',
+      field: 'delete',
+      title: 'Delete',
+      iconClass: 'fa-trash-o',
+      textAlign: 'center',
     },
   ];
 
@@ -83,6 +91,10 @@ export class AppComponent {
   }
 
   getCheckboxEvent(event) {
+    console.log(event);
+  }
+
+  getActionEvent(event) {
     console.log(event);
   }
 }

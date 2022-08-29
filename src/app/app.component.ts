@@ -74,7 +74,7 @@ export class AppComponent {
   constructor(private toaster: ToasterService, private _service: AppService) {}
 
   ngOnInit() {
-    this._service.getTableData().subscribe((res) => {
+    this._service.getTableData().subscribe((res: any[]) => {
       if (res && res?.length > 0) {
         this.tableData.data = res;
       }

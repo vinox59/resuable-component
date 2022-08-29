@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +9,7 @@ import { CustomDropdownComponent } from './custom-dropdown/custom-dropdown.compo
 import { ToasterComponent } from './toaster/toaster.component';
 import { ToasterContainerComponent } from './toaster/toaster-container/toaster-container.component';
 import { TableComponent } from './table/table.component';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -16,15 +17,10 @@ import { TableComponent } from './table/table.component';
     CustomDropdownComponent,
     ToasterComponent,
     ToasterContainerComponent,
-    TableComponent
+    TableComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [AppService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

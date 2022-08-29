@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Dropdown, IcountryDetail } from '../app/dropdown';
 import { CountriesService } from '../app/countries.service';
 import { ToasterService } from '../app/toaster/toaster.service';
 import { ITableSettings, ITableData } from './table/table.interface';
+
+import { AppService } from './app.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [CountriesService],
+  providers: [AppService],
 })
 export class AppComponent {
   title = 'reusable-Compnent';
@@ -69,7 +71,15 @@ export class AppComponent {
     ],
   };
 
-  constructor(private toaster: ToasterService) {}
+  constructor(private toaster: ToasterService, private _service: AppService) {}
+
+  ngOnInit() {
+    this._service.getTableData().subscribe((res) => {
+      if (res && res?.length > 0) {
+        this.tableData.data = res;
+      }
+    });
+  }
 
   showSuccessToaster() {
     this.toaster.show(

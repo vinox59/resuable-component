@@ -41,26 +41,27 @@ export class TableComponent implements OnInit {
   }
 
   getCurrentPage(pageNo, action?: string) {
-    this.currentPage = pageNo;
-
-    switch (action) {
-      case 'stepUp':
-        if (pageNo > this.sliceCountEnd) {
-          this.sliceCountStart++;
-          this.sliceCountEnd++;
-        }
-        break;
-      case 'stepDown':
-        if (pageNo <= this.initalPagination) {
-          this.sliceCountStart = 0;
-          this.sliceCountEnd = this.initalPagination;
-        }
-        break;
+    if(pageNo != this.currentPage) {
+      this.currentPage = pageNo;
+      switch (action) {
+        case 'stepUp':
+          if (pageNo > this.sliceCountEnd) {
+            this.sliceCountStart++;
+            this.sliceCountEnd++;
+          }
+          break;
+        case 'stepDown':
+          if (pageNo <= this.initalPagination) {
+            this.sliceCountStart = 0;
+            this.sliceCountEnd = this.initalPagination;
+          }
+          break;
+      }
+      const obj = {
+        currentPage: pageNo,
+      };
+      this.paginationDetails.emit(obj);
     }
-    const obj = {
-      currentPage: pageNo,
-    };
-    this.paginationDetails.emit(obj);
   }
 
   checkboxEmit(event: any, data: any, field: string) {

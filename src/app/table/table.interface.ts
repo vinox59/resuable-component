@@ -11,6 +11,7 @@ export interface ITableData {
   data: any[];
   count: number;
   perPage: number;
+  isServerSide: boolean;
 }
 
 export type fieldType = 'readonly' | 'checkbox' | 'button';

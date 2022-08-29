@@ -46,6 +46,7 @@ export class AppComponent {
   tableData: ITableData = {
     count: 95,
     perPage: 15,
+    isServerSide: true,
     data: [
       {
         name: 'Lisanth',
